@@ -20,6 +20,35 @@ local params = import 'params.libsonnet';
          "type": params.type
       }
    },
+{
+  "apiVersion": "batch/v1",
+  "kind": "Job",
+  "metadata": {
+    "name": "before",
+    "annotations": {
+      "argocd.argoproj.io/hook": "PreSync",
+      "argocd.argoproj.io/hook-delete-policy": "HookSucceeded"
+    }
+  },
+  "spec": {
+    "template": {
+      "spec": {
+        "containers": [
+          {
+            "name": "sleep",
+            "image": "alpine:latest",
+            "command": [
+              "sleep",
+              "10"
+            ]
+          }
+        ],
+        "restartPolicy": "Never"
+      }
+    },
+    "backoffLimit": 0
+  }
+},
    {
       "apiVersion": "apps/v1",
       "kind": "Deployment",
