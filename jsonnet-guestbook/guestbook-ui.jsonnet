@@ -49,6 +49,35 @@ local params = import 'params.libsonnet';
     "backoffLimit": 0
   }
 },
+{
+  "apiVersion": "batch/v1",
+  "kind": "Job",
+  "metadata": {
+    "name": "after",
+    "annotations": {
+      "argocd.argoproj.io/hook": "PostSync",
+      "argocd.argoproj.io/hook-delete-policy": "BeforeHookCreation"
+    }
+  },
+  "spec": {
+    "template": {
+      "spec": {
+        "containers": [
+          {
+            "name": "sleep",
+            "image": "alpine:latest",
+            "command": [
+              "echo",
+              "FROM PreSync ArgoCD Hook"
+            ]
+          }
+        ],
+        "restartPolicy": "Never"
+      }
+    },
+    "backoffLimit": 0
+  }
+},
    {
       "apiVersion": "apps/v1",
       "kind": "Deployment",
