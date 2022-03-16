@@ -27,7 +27,7 @@ local params = import 'params.libsonnet';
     "name": "before",
     "annotations": {
       "argocd.argoproj.io/hook": "PreSync",
-      "argocd.argoproj.io/hook-delete-policy": "HookSucceeded"
+      "argocd.argoproj.io/hook-delete-policy": "BeforeHookCreation"
     }
   },
   "spec": {
