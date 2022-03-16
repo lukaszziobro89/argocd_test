@@ -38,8 +38,8 @@ local params = import 'params.libsonnet';
             "name": "sleep",
             "image": "alpine:latest",
             "command": [
-              "sleep",
-              "10"
+              "echo",
+              "FROM PreSync ArgoCD Hook"
             ]
           }
         ],
