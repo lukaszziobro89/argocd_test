@@ -14,7 +14,7 @@ spec:
         app: test-app
     spec:
       containers:
-      - image: docker.io/lukaszziobro89/nd_microservice:0.0.1
+      - image: docker.io/lukaszziobro89/nd_microservice:0.0.2
         name: test-app
         ports:
         - containerPort: 5000
