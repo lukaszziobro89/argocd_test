@@ -7,6 +7,11 @@ metadata:
     chart: {{ template "helm-guestbook.chart" . }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
+parameters:
+  - name: image.tag
+    value: $ARGOCD_APP_REVISION
+  - name: test.image.tag
+    value: $ARGOCD_APP_REVISION
 spec:
   replicas: {{ .Values.replicaCount }}
   revisionHistoryLimit: 3
@@ -38,11 +43,6 @@ spec:
           #   httpGet:
           #     path: /
           #     port: http
-      parameters:
-        - name: image.tag
-          value: $ARGOCD_APP_REVISION
-        - name: test.image.tag
-          value: $ARGOCD_APP_REVISION
           resources:
 {{ toYaml .Values.resources | indent 12 }}
     {{- with .Values.nodeSelector }}
