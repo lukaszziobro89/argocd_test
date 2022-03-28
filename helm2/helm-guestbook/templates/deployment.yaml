@@ -29,10 +29,12 @@ spec:
               containerPort: 81
               protocol: TCP
           livenessProbe:
+            initialDelaySeconds: 10
             httpGet:
               path: /
               port: http
           readinessProbe:
+            initialDelaySeconds: 10
             httpGet:
               path: /
               port: http
