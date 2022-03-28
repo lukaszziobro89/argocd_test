@@ -19,7 +19,7 @@ spec:
           - name: DEMO_GREETING
             value: "Hello from the environment"
           - name: DEMO_FAREWELL
-            value: "Such a sweet sorrow"
+            value: "Such a sweet sorrow2"
           - name: ARGOCD_APP_NAME
             value: ${ARGOCD_APP_NAME}
         name: test-app
