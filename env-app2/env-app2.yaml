@@ -24,25 +24,3 @@ spec:
       value: $ARGOCD_APP_REVISION
     - name: test.image.tag
       value: $ARGOCD_APP_REVISION
-
-
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: env-app2
-  namespace: argocd
-spec:
-  project: default
-  source:
-    repoURL: https://github.com/lukaszziobro89/argocd_test
-    path: env-app2
-    targetRevision: HEAD
-    helm:
-      parameters:
-      - name: image.tag
-        value: $ARGOCD_APP_REVISION
-      - name: test.image.tag
-        value: $ARGOCD_APP_REVISION
-  destination:
-    server: 'https://kubernetes.default.svc'
-    namespace: default
