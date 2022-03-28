@@ -5,8 +5,8 @@
 replicaCount: 1
 
 image:
-  repository: https://github.com/lukaszziobro89/argocd_test
-  tag: 0.1
+  repository: docker.io/lukaszziobro89/nd_microservice
+  tag: 0.0.2
   pullPolicy: IfNotPresent
 
 service:
