@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: ghttps://github.com/lukaszziobro89/argocd_test
+  repository: https://github.com/lukaszziobro89/argocd_test
   # tag: 0.1
   pullPolicy: IfNotPresent
 
