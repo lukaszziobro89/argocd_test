@@ -38,6 +38,11 @@ spec:
           #   httpGet:
           #     path: /
           #     port: http
+      parameters:
+        - name: image.tag
+          value: $ARGOCD_APP_REVISION
+        - name: test.image.tag
+          value: $ARGOCD_APP_REVISION
           resources:
 {{ toYaml .Values.resources | indent 12 }}
     {{- with .Values.nodeSelector }}
