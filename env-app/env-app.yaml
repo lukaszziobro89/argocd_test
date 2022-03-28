@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: env-app
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: env-app
+  template:
+    metadata:
+      labels:
+        app: env-app
+    spec:
+      containers:
+      - image: docker.io/lukaszziobro89/nd_microservice:0.0.2
+        name: env-app
+        ports:
+        - containerPort: 5000
+    helm:
+      parameters:
+      - name: image.tag
+        value: $ARGOCD_APP_REVISION
+      - name: test.image.tag
+        value: $ARGOCD_APP_REVISION
