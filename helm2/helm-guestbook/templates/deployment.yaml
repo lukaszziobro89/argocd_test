@@ -39,6 +39,15 @@ spec:
           #     path: /
           #     port: http
           resources:
+spec:
+  source:
+    plugin:
+      env:
+        - name: FOO
+          value: bar
+        - name: REV
+          value: test-$ARGOCD_APP_REVISION
+          
 {{ toYaml .Values.resources | indent 12 }}
     {{- with .Values.nodeSelector }}
       nodeSelector:
