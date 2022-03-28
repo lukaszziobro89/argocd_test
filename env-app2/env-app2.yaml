@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: env-app2
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: env-app2
+  template:
+    metadata:
+      labels:
+        app: env-app2
+    spec:
+      containers:
+      - image: docker.io/lukaszziobro89/nd_microservice:0.0.2
+        name: env-app2
+        ports:
+        - containerPort: 5000
+  helm:
+    parameters:
+    - name: image.tag
+      value: $ARGOCD_APP_REVISION
+    - name: test.image.tag
+      value: $ARGOCD_APP_REVISION
+
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: env-app2
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/lukaszziobro89/argocd_test
+    path: env-app2
+    targetRevision: HEAD
+    helm:
+      parameters:
+      - name: image.tag
+        value: $ARGOCD_APP_REVISION
+      - name: test.image.tag
+        value: $ARGOCD_APP_REVISION
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: default
