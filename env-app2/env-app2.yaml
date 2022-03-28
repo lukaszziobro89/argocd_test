@@ -18,9 +18,3 @@ spec:
         name: env-app2
         ports:
         - containerPort: 5000
-  helm:
-    parameters:
-    - name: image.tag
-      value: $ARGOCD_APP_REVISION
-    - name: test.image.tag
-      value: $ARGOCD_APP_REVISION
