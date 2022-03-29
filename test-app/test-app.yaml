@@ -23,14 +23,14 @@ spec:
             value: "Such a sweet sorrow2"
           - name: ARGOCD_APP_NAME
             value: ${ARGOCD_APP_NAME}
-  directory:
-    jsonnet:
-      extVars:
-        - name: app
-          value: '${ARGOCD_APP_NAME}'
-      tlas:
-        - name: ns
-          value: '${ARGOCD_APP_NAMESPACE}'
+    directory:
+      jsonnet:
+        extVars:
+          - name: app
+            value: '${ARGOCD_APP_NAME}'
+        tlas:
+          - name: ns
+            value: '${ARGOCD_APP_NAMESPACE}'
 # destination:
   # server: 'https://kubernetes.default.svc'
   # namespace: default
