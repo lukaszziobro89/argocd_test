@@ -24,7 +24,7 @@ spec:
           - name: ARGOCD_APP_NAME
             value: ${ARGOCD_APP_NAME}
           - name: TEST_ENV
-            value: {{ .Values.spec.source.repoURL }}
+            value: $(git branch)
           # directory:
           #   jsonnet:
           #     extVars:
