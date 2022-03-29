@@ -25,6 +25,13 @@ spec:
             value: ${ARGOCD_APP_NAME}
           - name: TEST_ENV
             value: $(git branch)
+          - name: SPECIAL_LEVEL_KEY
+            valueFrom:
+              configMapKeyRef:
+                # The ConfigMap containing the value you want to assign to SPECIAL_LEVEL_KEY
+                name: special-config
+                # Specify the key associated with the value
+                key: repoURL
           # directory:
           #   jsonnet:
           #     extVars:
@@ -43,7 +50,6 @@ metadata:
   name: test-app-config
   namespace: default
 data:
-  game.properties: |
   repoURL : $ARGOCD_APP_SOURCE_REPO_URL
   targetRevision : $ARGOCD_APP_SOURCE_TARGET_REVISION
 
