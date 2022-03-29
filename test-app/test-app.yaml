@@ -15,6 +15,7 @@ spec:
     spec:
       containers:
       - image: docker.io/lukaszziobro89/nd_microservice:0.0.2
+        name: test-app
         env:
           - name: DEMO_GREETING
             value: "Hello from the environment"
