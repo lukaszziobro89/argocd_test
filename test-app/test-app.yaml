@@ -35,5 +35,15 @@ spec:
           #         value: '${ARGOCD_APP_NAMESPACE}'
 # destination:
   # server: 'https://kubernetes.default.svc'
-  # namespace: default
-        
+  # namespace: default-
+---
+apiVersion: apps/v1
+kind: ConfigMap
+metadata:
+  name: test-app-config
+  namespace: default
+data:
+  game.properties: |
+  repoURL : $ARGOCD_APP_SOURCE_REPO_URL
+  targetRevision : $ARGOCD_APP_SOURCE_TARGET_REVISION
+
