@@ -34,14 +34,3 @@ destination:
   server: 'https://kubernetes.default.svc'
   namespace: default
         
-
-        name: test-app
-        ports:
-        - containerPort: 5000
-      source:
-        plugin:
-          env:
-            - name: FOO
-              value: bar
-            - name: REV
-              value: test-$ARGOCD_APP_REVISION
