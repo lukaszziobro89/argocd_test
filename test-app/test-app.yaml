@@ -31,7 +31,7 @@ spec:
         #     tlas:
         #       - name: ns
         #         value: '${ARGOCD_APP_NAMESPACE}'
-destination:
-  server: 'https://kubernetes.default.svc'
-  namespace: default
+# destination:
+  # server: 'https://kubernetes.default.svc'
+  # namespace: default
         
