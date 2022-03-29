@@ -1,0 +1,48 @@
+# Default values that all applications and projects fall back to
+
+# cluster -- Cluster to deploy application to (`spec.destination.server`)
+cluster: https://kubernetes.default.svc
+
+# targetRevision -- Git target revision or helm chart version (`spec.source.targetRevision`)
+targetRevision: HEAD
+
+# env -- Special variable for templates inside templates to provide runtime variable substitution of values within values
+# This is especially helpful for dynamic paths as such: `path: bases/{{ .Values.env }}/folder` renders as `path: bases/dev/folder/`
+env:
+
+# repoURL -- URL of rpeository (`spec.source.repoURL`)
+# repoURL: 
+
+roles:
+  - name: read
+    description: Read only privileges
+#    Example policies and groups using template variables is left below but _not_ included by default
+#    policies:
+#      - p, proj:{{ $.Release.Name }}-{{ $.tenant }}:read, applications, get derp/*, allow
+#    groups:
+#      - /Product-Teams/{{ $.tenant }}
+
+# destinations -- List of namespaces and clusters (identified with namespace and server) allowed within project
+destinations:
+  - namespace: "*"
+    server: "*"
+
+# sourceRepos -- List of allowed repositories to source manifests from (defaults to anything)
+sourceRepos:
+  - "*"
+
+# namespaceResourceWhitelist -- List of namespace scoped resources (identified with group and kind) allowed within project
+namespaceResourceWhitelist:
+  - group: "*"
+    kind: "*"
+
+# clusterResourceWhitelist -- List of cluster scoped resources (identified with group and kind) allowed within project
+clusterResourceWhitelist:
+  - group: "*"
+    kind: "*"
+
+# clusterResourceBlacklist -- List of cluster scoped resources (identified with group and kind) not allowed within project
+clusterResourceBlacklist:
+  - group: ""
+    kind: ""
+
