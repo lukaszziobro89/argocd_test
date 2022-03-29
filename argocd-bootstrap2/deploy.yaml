@@ -1,0 +1,25 @@
+piVersion: apps/v1
+kind: Deployment
+metadata:
+  name: umbrella
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: umbrella
+  template:
+    metadata:
+      labels:
+        app: umbrella
+    spec:
+      containers:
+      - image: docker.io/lukaszziobro89/nd_microservice:0.0.2
+        name: umbrella
+        env:
+          - name: DEMO_GREETING
+            value: "Hello from the environment"
+          - name: DEMO_FAREWELL
+            value: "Such a sweet sorrow2"
+          - name: ARGOCD_APP_NAME
+            value: ${ARGOCD_APP_NAME}
